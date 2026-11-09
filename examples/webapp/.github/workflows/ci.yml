@@ -1,0 +1,52 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.9", "3.12", "3.13"]
+        include:
+          - os: ubuntu-24.04
+            python: "3.8"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e .[test] && pytest
+
+  e2e:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:16
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm ci && npx playwright install --with-deps
+      - run: npx playwright test
+      - run: pg_dump -h localhost -U postgres app > dump.sql
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build
+        run: ./gradlew assembleRelease
+
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libpcre3-dev qemu-user-static
+          sudo -E make install
+  lint:
+    runs-on: ubuntu-24.04   # already pinned
+    steps:
+      - uses: actions/checkout@v5
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.64.8

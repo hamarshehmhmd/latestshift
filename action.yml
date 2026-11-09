@@ -1,0 +1,36 @@
+name: latestshift
+description: Find what breaks when ubuntu-latest moves from Ubuntu 24.04 to 26.04 (workflow scan with annotations and a job summary).
+author: Mohammad Hamarsheh
+branding:
+  icon: alert-triangle
+  color: orange
+inputs:
+  path:
+    description: Repository root to scan
+    default: "."
+  fail-on:
+    description: "Fail the step when a finding is at least this severe: break, risk, info or none"
+    default: break
+  min-severity:
+    description: "Lowest severity to report: info, risk or break"
+    default: risk
+  include-26:
+    description: Also check jobs that already run on ubuntu-26.04
+    default: "false"
+runs:
+  using: composite
+  steps:
+    - name: Install latestshift
+      shell: bash
+      run: python3 -m pip install --quiet --disable-pip-version-check "${{ github.action_path }}" 2>/dev/null || python3 -m pip install --quiet --break-system-packages "${{ github.action_path }}"
+    - name: Scan workflows
+      shell: bash
+      env:
+        LS_PATH: ${{ inputs.path }}
+        LS_FAIL: ${{ inputs.fail-on }}
+        LS_MIN: ${{ inputs.min-severity }}
+        LS_26: ${{ inputs.include-26 }}
+      run: |
+        args=(scan "$LS_PATH" --format github --summary --fail-on "$LS_FAIL" --min-severity "$LS_MIN")
+        [ "$LS_26" = "true" ] && args+=(--include-26)
+        python3 -m latestshift "${args[@]}"

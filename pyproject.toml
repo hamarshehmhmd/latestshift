@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latestshift"
+version = "0.1.0"
+description = "Find what breaks when GitHub Actions' ubuntu-latest moves from Ubuntu 24.04 to 26.04: offline workflow scan, image-vs-failure check on real runs, and a one-command pin."
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{name = "Mohammad Hamarsheh"}]
+requires-python = ">=3.9"
+dependencies = ["PyYAML>=5.1"]
+keywords = ["github-actions", "ci", "ubuntu", "ubuntu-26.04", "runner-images", "migration", "lint", "devops"]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.urls]
+Homepage = "https://github.com/hamarshehmhmd/latestshift"
+Issues = "https://github.com/hamarshehmhmd/latestshift/issues"
+
+[project.scripts]
+latestshift = "latestshift.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

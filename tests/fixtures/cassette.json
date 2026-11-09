@@ -1,0 +1,312 @@
+{
+ "runs": [
+  {
+   "id": 105,
+   "name": "CI",
+   "workflow_id": 1,
+   "created_at": "2026-11-06T10:00:00Z"
+  },
+  {
+   "id": 104,
+   "name": "CI",
+   "workflow_id": 1,
+   "created_at": "2026-11-05T10:00:00Z"
+  },
+  {
+   "id": 103,
+   "name": "CI",
+   "workflow_id": 1,
+   "created_at": "2026-11-04T10:00:00Z"
+  },
+  {
+   "id": 102,
+   "name": "CI",
+   "workflow_id": 1,
+   "created_at": "2026-11-03T10:00:00Z"
+  },
+  {
+   "id": 101,
+   "name": "CI",
+   "workflow_id": 1,
+   "created_at": "2026-11-02T10:00:00Z"
+  }
+ ],
+ "jobs": {
+  "101": [
+   {
+    "id": 9001,
+    "name": "build",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-02T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/101/job/9001"
+   },
+   {
+    "id": 9002,
+    "name": "lint",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-02T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/101/job/9002"
+   },
+   {
+    "id": 9003,
+    "name": "docs",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-02T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/101/job/9003"
+   },
+   {
+    "id": 9004,
+    "name": "e2e",
+    "run_attempt": 1,
+    "conclusion": "failure",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-02T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/101/job/9004"
+   }
+  ],
+  "102": [
+   {
+    "id": 9005,
+    "name": "build",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-03T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/102/job/9005"
+   },
+   {
+    "id": 9006,
+    "name": "lint",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-03T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/102/job/9006"
+   },
+   {
+    "id": 9007,
+    "name": "docs",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-03T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/102/job/9007"
+   },
+   {
+    "id": 9008,
+    "name": "e2e",
+    "run_attempt": 1,
+    "conclusion": "failure",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-03T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/102/job/9008"
+   }
+  ],
+  "103": [
+   {
+    "id": 9009,
+    "name": "build",
+    "run_attempt": 1,
+    "conclusion": "failure",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-04T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/103/job/9009"
+   },
+   {
+    "id": 9010,
+    "name": "lint",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-04T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/103/job/9010"
+   },
+   {
+    "id": 9011,
+    "name": "docs",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-04T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/103/job/9011"
+   },
+   {
+    "id": 9012,
+    "name": "e2e",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-04T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/103/job/9012"
+   },
+   {
+    "id": 9013,
+    "name": "build",
+    "run_attempt": 2,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-04T10:02:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/103/job/9013"
+   }
+  ],
+  "104": [
+   {
+    "id": 9014,
+    "name": "build",
+    "run_attempt": 1,
+    "conclusion": "failure",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-05T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/104/job/9014"
+   },
+   {
+    "id": 9015,
+    "name": "lint",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-05T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/104/job/9015"
+   },
+   {
+    "id": 9016,
+    "name": "docs",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-05T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/104/job/9016"
+   },
+   {
+    "id": 9017,
+    "name": "e2e",
+    "run_attempt": 1,
+    "conclusion": "failure",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-05T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/104/job/9017"
+   }
+  ],
+  "105": [
+   {
+    "id": 9018,
+    "name": "build",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-06T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/105/job/9018"
+   },
+   {
+    "id": 9019,
+    "name": "lint",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-06T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/105/job/9019"
+   },
+   {
+    "id": 9020,
+    "name": "docs",
+    "run_attempt": 1,
+    "conclusion": "cancelled",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-06T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/105/job/9020"
+   },
+   {
+    "id": 9021,
+    "name": "e2e",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-latest"
+    ],
+    "started_at": "2026-11-06T10:01:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/105/job/9021"
+   },
+   {
+    "id": 9999,
+    "name": "release",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "labels": [
+     "ubuntu-24.04"
+    ],
+    "started_at": "2026-11-06T10:05:00Z",
+    "html_url": "https://github.com/acme/shop/actions/runs/105/job/9999"
+   }
+  ]
+ },
+ "logs": {
+  "9001": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9002": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9003": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9004": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9005": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9006": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9007": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9008": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9009": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9010": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9011": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9012": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9013": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9014": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9015": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9016": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9017": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9018": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9019": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 26.04.1\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-26.04\n2026-11-05T10:00:00.0000000Z Version: 20261101.186.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9020": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9021": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n",
+  "9999": "2026-11-05T10:00:00.0000000Z Current runner version: '2.338.2'\n2026-11-05T10:00:00.0000000Z ##[group]Operating System\n2026-11-05T10:00:00.0000000Z Ubuntu\n2026-11-05T10:00:00.0000000Z 24.04.5\n2026-11-05T10:00:00.0000000Z LTS\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z ##[group]Runner Image\n2026-11-05T10:00:00.0000000Z Image: ubuntu-24.04\n2026-11-05T10:00:00.0000000Z Version: 20261025.353.1\n2026-11-05T10:00:00.0000000Z ##[endgroup]\n2026-11-05T10:00:00.0000000Z Prepare workflow directory\n"
+ }
+}

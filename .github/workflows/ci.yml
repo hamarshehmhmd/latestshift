@@ -1,0 +1,135 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+        include:
+          - os: ubuntu-24.04   # no Python 3.9 build exists for Ubuntu 26.04
+            python: "3.9"
+          - os: macos-latest
+            python: "3.13"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install . pytest
+      - run: python -m pytest -q -rs
+
+  verify-rules-on-2604:
+    name: verify rules against the real ubuntu-26.04 image
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: "py-old: setup-python 3.9 must fail on 26.04"
+        id: py39
+        continue-on-error: true
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.9"
+      - name: "py-patch: setup-python 3.12.4 must fail on 26.04"
+        id: py3124
+        continue-on-error: true
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.4"
+      - name: assert setup-python outcomes
+        env:
+          PY39: ${{ steps.py39.outcome }}
+          PY3124: ${{ steps.py3124.outcome }}
+        run: |
+          echo "3.9 -> $PY39, 3.12.4 -> $PY3124"
+          test "$PY39" = failure
+          test "$PY3124" = failure
+      - name: "java25-gradle / java8-home: default JDK is 25, JAVA_HOME_8_X64 unset"
+        run: |
+          java -version 2>&1 | tee /tmp/java.txt
+          grep -q '"25' /tmp/java.txt
+          test -z "${JAVA_HOME_8_X64:-}"
+          test -n "${JAVA_HOME_17_X64:-}"
+      - name: "conda: no Miniconda, CONDA empty"
+        run: |
+          echo "CONDA='${CONDA:-}'"
+          test -z "${CONDA:-}"
+          ! command -v conda
+      - name: "apt-gone: libpcre3-dev and qemu-user-static have no candidate"
+        run: |
+          sudo apt-get update -qq
+          for p in libpcre3-dev qemu-user-static; do
+            if apt-get install --dry-run -qq "$p" >/dev/null 2>&1; then echo "$p IS installable"; exit 1; fi
+            echo "$p: not installable on $(lsb_release -ds)"
+          done
+      - name: "sudo-E: does sudo -E keep the environment?"
+        run: |
+          sudo --version | head -1
+          got=$(FOO=kept sudo -E sh -c 'echo "${FOO:-dropped}"' 2>&1 || true)
+          echo "FOO via sudo -E: $got"
+          echo "$got" > sudo-e.txt
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: latestshift scan finds the same things on the example repo
+        run: |
+          python -m pip install .
+          set +e; latestshift --color always scan examples/webapp; rc=$?; set -e
+          echo "exit code: $rc"; test "$rc" -eq 1
+
+  live-runs:
+    name: runs against real GitHub job logs
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: python -m pip install .
+      - name: read recent runs of this repo
+        run: |
+          latestshift --color always runs ${{ github.repository }} --limit 5 --all-labels
+          latestshift runs ${{ github.repository }} --limit 5 --all-labels --format json > runs.json
+          python - <<'PY'
+          import json
+          d = json.load(open("runs.json"))
+          imgs = {r["image"] for g in d for r in g["runs"]}
+          print("images seen:", imgs)
+          if d:
+              assert imgs & {"ubuntu-24.04", "ubuntu-26.04"}, "no runner image parsed from any job log"
+          else:
+              print("no completed runs yet (first push)")
+          PY
+
+  install-script:
+    name: one-line install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: LATESTSHIFT_REF=${{ github.sha }} sh install.sh
+      - run: |
+          export PATH="$HOME/.local/bin:${PIPX_BIN_DIR:-/opt/pipx_bin}:$PATH"
+          latestshift --version
+          latestshift scan . --fail-on none
+
+  action:
+    name: GitHub Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: scan the example (expected to fail on break findings)
+        id: scan
+        continue-on-error: true
+        uses: ./
+        with:
+          path: examples/webapp
+      - name: scan this repo (expected to pass)
+        uses: ./
+      - run: test "${{ steps.scan.outcome }}" = failure
