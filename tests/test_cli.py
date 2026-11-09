@@ -143,3 +143,11 @@ def test_client_retries_5xx(monkeypatch):
     monkeypatch.setattr(R.time, "sleep", lambda s: None)
     assert R.Client("t").get_json("/x") == {"ok": True}
     assert len(calls) == 2
+
+
+def test_color_flag_after_subcommand(repo, capsys):
+    bad = repo("jobs:\n  a:\n    runs-on: ubuntu-latest\n    steps:\n      - run: sudo -E make\n")
+    assert main(["scan", bad, "--color", "always"]) == 1
+    assert "\x1b[31mBREAK" in capsys.readouterr().out
+    assert main(["--color", "never", "scan", bad]) == 1
+    assert "\x1b[" not in capsys.readouterr().out

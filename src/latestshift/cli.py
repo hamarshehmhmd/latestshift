@@ -208,9 +208,11 @@ def build_parser():
                                 description="Find what breaks when GitHub's ubuntu-latest label moves from Ubuntu 24.04 to 26.04.")
     p.add_argument("--version", action="version", version=f"latestshift {__version__}")
     p.add_argument("--color", choices=["auto", "always", "never"], default="auto")
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("--color", choices=["auto", "always", "never"], default=argparse.SUPPRESS)
     sub = p.add_subparsers(dest="cmd")
 
-    s = sub.add_parser("scan", help="check workflow files for 26.04 breakages (offline)")
+    s = sub.add_parser("scan", parents=[common], help="check workflow files for 26.04 breakages (offline)")
     s.add_argument("path", nargs="?", default=".", help="repo root or a workflow file (default .)")
     s.add_argument("--format", choices=["text", "json", "markdown", "github"], default="text")
     s.add_argument("--min-severity", choices=["info", "risk", "break"], default="risk",
@@ -223,14 +225,14 @@ def build_parser():
     s.add_argument("-v", "--verbose", action="store_true", help="show sources and notes")
     s.set_defaults(func=cmd_scan)
 
-    pn = sub.add_parser("pin", help="rewrite ubuntu-latest to an explicit label (dry run unless --write)")
+    pn = sub.add_parser("pin", parents=[common], help="rewrite ubuntu-latest to an explicit label (dry run unless --write)")
     pn.add_argument("path", nargs="?", default=".")
     pn.add_argument("--to", default="ubuntu-24.04", help="label to pin to (default ubuntu-24.04)")
     pn.add_argument("--file", action="append", help="only this workflow file (repeatable)")
     pn.add_argument("--write", action="store_true")
     pn.set_defaults(func=cmd_pin)
 
-    r = sub.add_parser("runs", help="which image did recent ubuntu-latest jobs get, and do they fail only on 26.04?")
+    r = sub.add_parser("runs", parents=[common], help="which image did recent ubuntu-latest jobs get, and do they fail only on 26.04?")
     r.add_argument("repo", help="OWNER/REPO")
     r.add_argument("--limit", type=int, default=30, help="recent completed runs to read (default 30)")
     r.add_argument("--max-logs", type=int, default=80, help="cap on job logs fetched (default 80)")
@@ -242,7 +244,7 @@ def build_parser():
     r.add_argument("-v", "--verbose", action="store_true", help="list every job run")
     r.set_defaults(func=cmd_runs)
 
-    ru = sub.add_parser("rules", help="list rule ids")
+    ru = sub.add_parser("rules", parents=[common], help="list rule ids")
     ru.set_defaults(func=cmd_rules)
     return p
 
