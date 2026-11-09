@@ -454,7 +454,7 @@ def r_node_pkgs(j, repo):
                     yield ("playwright-old", "break", step_line(st, r"playwright\s+install"),
                            f"{dep} {pk[dep]} (package.json): Playwright before 1.61 cannot install browsers on 26.04 "
                            "(\"does not support chromium on ubuntu26.04-x64\")", "update to @playwright/test >= 1.61",
-                           LESSTEP)
+                           "https://github.com/microsoft/playwright/releases/tag/v1.61.0")
                     break
         if re.search(r"\bwdio\b|webdriverio", t):
             for dep in ("@wdio/cli", "webdriverio"):

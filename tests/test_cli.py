@@ -123,7 +123,7 @@ def test_version_and_help(capsys):
     import pytest
     with pytest.raises(SystemExit):
         main(["--version"])
-    assert "latestshift 0.1.0" in capsys.readouterr().out
+    assert "latestshift 0.1.1" in capsys.readouterr().out
     assert main([]) == 2
 
 

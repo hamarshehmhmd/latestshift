@@ -82,7 +82,7 @@ def scan_markdown(res, shown) -> str:
 
 
 def cmd_scan(a):
-    res = scan(a.path, include_pinned=a.include_26)
+    res = scan(a.path, include_pinned=a.include_26, all_ubuntu=a.all_ubuntu)
     shown = filter_findings(res.findings, a.min_severity)
     if a.only:
         keep = set(a.only.split(","))
@@ -221,6 +221,8 @@ def build_parser():
                    help="exit 1 when a shown finding is at least this severe (default break)")
     s.add_argument("--only", help="comma-separated rule ids")
     s.add_argument("--include-26", action="store_true", help="also check jobs already on ubuntu-26.04")
+    s.add_argument("--all-ubuntu", action="store_true",
+                   help="check jobs pinned to ubuntu-22.04/24.04/26.04 too, as if they ran on 26.04 (before lifting pins)")
     s.add_argument("--summary", action="store_true", help="append a markdown table to $GITHUB_STEP_SUMMARY")
     s.add_argument("-v", "--verbose", action="store_true", help="show sources and notes")
     s.set_defaults(func=cmd_scan)

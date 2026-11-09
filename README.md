@@ -60,7 +60,8 @@ BREAK .github/workflows/ci.yml:36  job android  [java25-gradle]
   `${{ matrix.* }}`, so `python: ["3.9", "3.12"]` on `ubuntu-latest` is flagged, but an `include` that
   pins 3.9 to `ubuntu-24.04` is not. Matrices built with `fromJSON(...)` are reported as unresolved.
 - **Only jobs that move.** Jobs already on `ubuntu-24.04`/`22.04`, Windows, macOS or self-hosted are
-  skipped. `--include-26` also checks jobs you've already moved to `ubuntu-26.04`.
+  skipped. `--include-26` also checks jobs you've already moved to `ubuntu-26.04`, and `--all-ubuntu`
+  checks jobs pinned to `ubuntu-22.04`/`24.04` as if they ran on 26.04 (use it before lifting a pin).
 - **Repo files.** `.python-version`, `.ruby-version`, `package.json` (Playwright, WebdriverIO) and the
   Gradle wrapper version.
 - **Container jobs.** When a job sets `container:`, steps run in that image, so userland rules (Python
@@ -109,11 +110,12 @@ want to fix what `scan` found and move on purpose.
 
 ```yaml
 - uses: actions/checkout@v5
-- uses: hamarshehmhmd/latestshift@v0.1.0
+- uses: hamarshehmhmd/latestshift@v0.1.1
   with:
     fail-on: break        # break | risk | info | none
     # min-severity: risk
     # include-26: "true"
+    # all-ubuntu: "true"
 ```
 
 Adds annotations on the workflow lines and a table to the job summary.

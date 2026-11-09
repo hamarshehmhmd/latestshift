@@ -17,6 +17,9 @@ inputs:
   include-26:
     description: Also check jobs that already run on ubuntu-26.04
     default: "false"
+  all-ubuntu:
+    description: Check jobs pinned to ubuntu-22.04/24.04/26.04 as if they ran on 26.04
+    default: "false"
 runs:
   using: composite
   steps:
@@ -30,7 +33,9 @@ runs:
         LS_FAIL: ${{ inputs.fail-on }}
         LS_MIN: ${{ inputs.min-severity }}
         LS_26: ${{ inputs.include-26 }}
+        LS_ALL: ${{ inputs.all-ubuntu }}
       run: |
         args=(scan "$LS_PATH" --format github --summary --fail-on "$LS_FAIL" --min-severity "$LS_MIN")
         [ "$LS_26" = "true" ] && args+=(--include-26)
+        [ "$LS_ALL" = "true" ] && args+=(--all-ubuntu)
         python3 -m latestshift "${args[@]}"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "latestshift"
-version = "0.1.0"
+version = "0.1.1"
 description = "Find what breaks when GitHub Actions' ubuntu-latest moves from Ubuntu 24.04 to 26.04: offline workflow scan, image-vs-failure check on real runs, and a one-command pin."
 readme = "README.md"
 license = "AGPL-3.0-or-later"

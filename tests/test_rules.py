@@ -398,3 +398,20 @@ def test_example_repo_findings():
     root = os.path.join(os.path.dirname(__file__), "..", "examples", "webapp")
     res = scan(root)
     assert rules(res) == sorted(["py-old", "playwright-old", "java25-gradle", "apt-gone", "apt-gone", "sudo-E", "pg-dump-18"])
+
+
+def test_all_ubuntu_checks_pinned_jobs_before_lifting_pins(repo):
+    root = repo("""
+        jobs:
+          e2e:
+            runs-on: ubuntu-24.04   # pinned until Playwright supports 26.04
+            steps:
+              - run: npx playwright install --with-deps chromium
+          mac:
+            runs-on: macos-15
+            steps:
+              - run: npx playwright install
+    """, files={"package.json": '{"devDependencies": {"@playwright/test": "^1.52.0"}}'})
+    assert rules(scan(root)) == []
+    res = scan(root, all_ubuntu=True)
+    assert [(f.rule, f.job) for f in res.findings] == [("playwright-old", "e2e")]

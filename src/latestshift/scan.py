@@ -60,8 +60,9 @@ def _status(labels, unresolved):
     return "other"
 
 
-def scan(root: str, include_pinned: bool = False) -> ScanResult:
-    """include_pinned also checks jobs already on ubuntu-26.04 (useful when moving them on purpose)."""
+def scan(root: str, include_pinned: bool = False, all_ubuntu: bool = False) -> ScanResult:
+    """include_pinned also checks jobs already on ubuntu-26.04 (useful when moving them on purpose).
+    all_ubuntu checks every job on an x64 ubuntu-XX.04 label as if it ran on 26.04 (before lifting pins)."""
     res = ScanResult(root)
     repo = Repo(root)
     wfs = find_workflows(root)
@@ -83,7 +84,8 @@ def scan(root: str, include_pinned: bool = False) -> ScanResult:
                 per_job[v.job_id] = JobSummary(wf.rel, v.job_id, v.line, labels, st)
             else:
                 prev.labels = sorted(set(prev.labels + v.labels))
-            check = v.affected or (include_pinned and "ubuntu-26.04" in v.labels)
+            check = v.affected or (include_pinned and "ubuntu-26.04" in v.labels) or \
+                (all_ubuntu and any(l in ("ubuntu-22.04", "ubuntu-24.04", "ubuntu-26.04") for l in v.labels))
             if not check:
                 continue
             for f in check_job(v, repo):
