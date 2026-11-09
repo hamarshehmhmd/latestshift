@@ -5,3 +5,4 @@ dist/
 .pytest_cache/
 demo/build/
 /demo.mp4
+launch/
