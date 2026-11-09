@@ -238,7 +238,8 @@ def r_sudo_e(j, repo):
         m = re.search(r"\bsudo\s+(?:-[A-Za-z]*E[A-Za-z]*|--preserve-env)(?=\s|$)", t)
         if m:
             yield ("sudo-E", "break", step_line(st, re.escape(m.group(0))),
-                   "`sudo -E` / bare --preserve-env: sudo on 26.04 is sudo-rs, which does not keep your environment this way",
+                   "`sudo -E` / bare --preserve-env: sudo on 26.04 is sudo-rs, which drops your environment "
+                   "(\"preserving the entire environment is not supported, '-E' is ignored\")",
                    "name the variables: sudo --preserve-env=PATH,FOO cmd (or pass them as VAR=value after sudo)",
                    LESSTEP)
 

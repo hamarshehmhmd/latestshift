@@ -125,3 +125,21 @@ def test_version_and_help(capsys):
         main(["--version"])
     assert "latestshift 0.1.0" in capsys.readouterr().out
     assert main([]) == 2
+
+
+def test_client_retries_5xx(monkeypatch):
+    import io
+    import urllib.error
+    import latestshift.runs as R
+    calls = []
+
+    def fake_urlopen(req, timeout=30):
+        calls.append(req.full_url)
+        if len(calls) == 1:
+            raise urllib.error.HTTPError(req.full_url, 502, "Bad Gateway", {}, None)
+        return io.BytesIO(b'{"ok": true}')
+
+    monkeypatch.setattr(R.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(R.time, "sleep", lambda s: None)
+    assert R.Client("t").get_json("/x") == {"ok": True}
+    assert len(calls) == 2

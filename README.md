@@ -51,7 +51,7 @@ BREAK .github/workflows/ci.yml:36  job android  [java25-gradle]
        default JDK is 25 on 26.04 (17 on 24.04); Gradle wrapper 8.10.2 cannot run on Java 25 before 9.1 ("Unsupported class file major version 69")
        fix: add actions/setup-java with java-version: '17' (or 21), or move the wrapper to Gradle >= 9.1
 ...
-5 break, 1 risk, 0 info   quick way out: latestshift pin --write  (ubuntu-latest -> ubuntu-24.04)
+6 break, 1 risk, 0 info   quick way out: latestshift pin --write  (ubuntu-latest -> ubuntu-24.04)
 ```
 
 (That is [`examples/webapp`](examples/webapp).) What it understands:
@@ -168,7 +168,7 @@ setup-python 3.9 and 3.12.4 fail, the default JDK is 25, `JAVA_HOME_8_X64` and `
 ## Demo
 
 [`demo.mp4`](https://github.com/hamarshehmhmd/latestshift/releases/download/v0.1.0/demo.mp4) is a
-2.5-minute narrated walkthrough (attached to the v0.1.0 release). `demo/render.py` rebuilds it from
+2.7-minute narrated walkthrough (attached to the v0.1.0 release). `demo/render.py` rebuilds it from
 real command output.
 
 ## Development

@@ -67,12 +67,12 @@ jobs:
             if apt-get install --dry-run -qq "$p" >/dev/null 2>&1; then echo "$p IS installable"; exit 1; fi
             echo "$p: not installable on $(lsb_release -ds)"
           done
-      - name: "sudo-E: does sudo -E keep the environment?"
+      - name: "sudo-E: sudo-rs ignores -E"
         run: |
           sudo --version | head -1
-          got=$(FOO=kept sudo -E sh -c 'echo "${FOO:-dropped}"' 2>&1 || true)
+          got=$(FOO=kept sudo -E sh -c 'echo "${FOO:-dropped}"' 2>/dev/null)
           echo "FOO via sudo -E: $got"
-          echo "$got" > sudo-e.txt
+          test "$got" = dropped
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"

@@ -6,6 +6,7 @@ import os
 import re
 import shutil
 import subprocess
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -58,13 +59,20 @@ class Client:
 
     def get_json(self, path: str, params: dict | None = None):
         url = API + path + ("?" + urllib.parse.urlencode(params) if params else "")
-        try:
-            with urllib.request.urlopen(self._req(url), timeout=30) as resp:
-                return json.load(resp)
-        except urllib.error.HTTPError as e:
-            raise ApiError(f"GET {path}: HTTP {e.code} {e.reason}") from None
-        except urllib.error.URLError as e:
-            raise ApiError(f"GET {path}: {e.reason}") from None
+        for attempt in range(4):
+            try:
+                with urllib.request.urlopen(self._req(url), timeout=30) as resp:
+                    return json.load(resp)
+            except urllib.error.HTTPError as e:
+                if e.code in (500, 502, 503, 504) and attempt < 3:
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                raise ApiError(f"GET {path}: HTTP {e.code} {e.reason}") from None
+            except urllib.error.URLError as e:
+                if attempt < 3:
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                raise ApiError(f"GET {path}: {e.reason}") from None
 
     def get_log_head(self, repo: str, job_id: int) -> str:
         """First ~96 KB of a job log. The API answers with a redirect to blob storage, which must be
